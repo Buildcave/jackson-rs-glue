@@ -2,6 +2,10 @@ import _ from 'lodash';
 import express from 'express';
 import RedirectTemplate from './templates/dist/redirect.template';
 
+// Elasticbeanstalk sets port to upstream port
+// automatically.
+const port = process.env.PORT || 3000;
+
 const app = express();
 
 app.get('/', (req, res) => {
@@ -11,6 +15,6 @@ app.get('/', (req, res) => {
   res.send(response);
 });
 
-app.listen(3000, () => {
-  console.log('Example app listening on port 3000!');
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}!`);
 });

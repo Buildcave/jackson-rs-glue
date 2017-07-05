@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "build:templates": "node ./scripts/build-templates.js",
     "build": "webpack -p",
+    "start": "node ./index.js",
     "build:verify": "npm run test && npm run lint",
     "test": "mocha-webpack --timeout 20000 --recursive --webpack-config webpack.config.js test",
     "test:watch": "npm run test -- --watch"

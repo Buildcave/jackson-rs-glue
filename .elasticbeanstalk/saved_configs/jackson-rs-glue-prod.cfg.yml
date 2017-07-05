@@ -1,0 +1,33 @@
+EnvironmentConfigurationMetadata:
+  DateCreated: '1499291669000'
+  DateModified: '1499291669000'
+Platform:
+  PlatformArn: arn:aws:elasticbeanstalk:us-east-1::platform/Node.js running on 64bit Amazon Linux/4.1.1
+OptionSettings:
+  AWSEBSecurityGroup.aws:ec2:vpc:
+    VPCId: vpc-99478dfd
+  aws:elb:policies:
+    ConnectionDrainingEnabled: true
+  aws:elb:loadbalancer:
+    CrossZone: true
+  aws:elasticbeanstalk:environment:
+    ServiceRole: aws-elasticbeanstalk-service-role
+  aws:ec2:vpc:
+    Subnets: subnet-2a012f16,subnet-e749cacb
+    ELBSubnets: subnet-2a012f16,subnet-e749cacb
+    AssociatePublicIpAddress: true
+  aws:elasticbeanstalk:healthreporting:system:
+    SystemType: enhanced
+  AWSEBLoadBalancer.aws:elb:loadbalancer:
+    LoadBalancerHTTPSPort: '443'
+    SSLCertificateId: arn:aws:acm:us-east-1:834835117621:certificate/3dc90bd0-bbd2-4c80-b145-7ca5ab62d48d
+  aws:autoscaling:launchconfiguration:
+    SecurityGroups: ''
+    IamInstanceProfile: aws-elasticbeanstalk-ec2-role
+    InstanceType: t2.small
+  AWSEBAutoScalingLaunchConfiguration.aws:autoscaling:launchconfiguration:
+    EC2KeyName: useast1-elasticacheinstance
+EnvironmentTier:
+  Type: Standard
+  Name: WebServer
+AWSConfigurationTemplateVersion: 1.1.0.0

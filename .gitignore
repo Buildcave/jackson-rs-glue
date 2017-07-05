@@ -1,4 +1,4 @@
 node_modules
-dist/v*
+dist/release-candidate.zip
 npm-debug.log
 .tmp
