@@ -1,2 +1,16 @@
-# jackson-rs-glue
-Express JS server mapping old RS endpoints to new jackson endpoints
+## Jackson
+### RS Glue
+
+Find more information on Jackson RS Glue here:
+https://github.com/Buildcave/jackson-rs-glue
+
+Find more information on the parent Jackson project here:
+https://github.com/Buildcave/jackson
+
+We truly believe this software is epic and hope you find it useful.
+
+Sincerely,
+
+<img alt="Trevor Alfstad Signature" class="signature" src=images/team/signatures/trevoralfstad.png />
+
+(Trevor Alfstad, Developer)

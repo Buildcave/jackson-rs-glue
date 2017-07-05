@@ -1,0 +1,55 @@
+{
+  "name": "jackson-rs-glue",
+  "version": "1.0.0",
+  "description": "Find more information on Jackson RS Glue here: https://github.com/Buildcave/jackson-rs-glue",
+  "scripts": {
+    "deploy:ci": "node ./scripts/deploy-ci.js",
+    "prepush": "npm run build:verify && npm run build",
+    "commitmsg": "validate-commit-msg $GIT_PARAMS",
+    "lint": "eslint .",
+    "build": "webpack -p",
+    "build:verify": "npm run test && npm run lint",
+    "test": "mocha-webpack --timeout 20000 --recursive --webpack-config webpack.config.js test",
+    "test:watch": "npm run test -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Buildcave/jackson-rs-glue.git"
+  },
+  "author": "Buildcave, LLC",
+  "bugs": {
+    "url": "https://github.com/Buildcave/jackson-rs-glue/issues"
+  },
+  "homepage": "https://github.com/Buildcave/jackson-rs-glue#readme",
+  "devDependencies": {
+    "archiver": "^1.3.0",
+    "aws-sdk": "^2.57.0",
+    "babel-core": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-syntax-flow": "^6.18.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "chai": "^3.5.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^5.0.3",
+    "eslint-plugin-react": "^7.0.1",
+    "fs": "0.0.1-security",
+    "git-describe": "^4.0.1",
+    "git-rev": "^0.2.1",
+    "husky": "0.13.3",
+    "json-loader": "^0.5.4",
+    "mocha": "^3.4.1",
+    "mocha-webpack": "^0.7.0",
+    "rimraf": "^2.6.1",
+    "validate-commit-msg": "2.12.1",
+    "webpack": "^2.6.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "npmlog": "^4.1.0",
+  }
+}
