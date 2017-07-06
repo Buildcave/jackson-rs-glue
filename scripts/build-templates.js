@@ -47,7 +47,7 @@ const buildTemplates = () => {
         }),
       ],
     }, (err) => {
-      if (err) reject();
+      if (err) reject(err);
       else resolve();
     });
   });

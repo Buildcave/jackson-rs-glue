@@ -28,8 +28,6 @@ const createArtifactForDeployment = () => {
 
     archive.file('dist/index.js', { name: 'index.js' });
     archive.file('package.json');
-    archive.file('Dockerfile');
-    archive.file('Dockerrun.aws.json');
 
     archive.directory('.ebextensions');
     archive.directory('node_modules');
