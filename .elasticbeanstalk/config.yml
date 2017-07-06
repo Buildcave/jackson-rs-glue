@@ -6,7 +6,7 @@ branch-defaults:
   test:
     environment: jackson-rs-glue-prod
 deploy:
-  artifact: release-candidate.zip
+  artifact: dist/release-candidate.zip
 global:
   application_name: jackson-rs-glue
   default_ec2_keyname: BuildcaveKeyPair

@@ -1,31 +1,42 @@
 import _ from 'lodash';
 import express from 'express';
+import logger from 'npmlog';
+import cors from 'cors';
+import bodyParser from 'body-parser';
 import RedirectTemplate from './templates/dist/redirect.template';
-// import MapRequestsToUUID from '../lib/map-requests-to-uuid';
+import MapRequestsToUUID from '../lib/map-requests-to-uuid';
+import { logLevel } from '../config';
 
-const app = express();
-// const redirectHost = 'https://github.com';
+logger.logLevel = logLevel;
+
+const redirectHost = 'https://github.com';
 
 // Elasticbeanstalk sets port to upstream port
 // automatically.
 const port = process.env.PORT || 3000;
 
+const app = express();
 
-app.get('*', (req, res) => {
-  // console.log(`HEfY TREV: ${redirectHost}${req.path}`);
-  // TODO: get the uuid from the request and pass it into the template
-  // MapRequestsToUUID.mapReqByUrl(req)
-  //   .then(() => {
-  const compiled = _.template(RedirectTemplate);
-  const response = compiled({ test: 'TESTs123 TEMPLATE VALUEEE' });
-  res.send(response);
-    // })
-    // .catch(() => {
-    //   // TODO: forward to same url but with github.com host
-    //   res.redirect(`${redirectHost}${req.path}`);
-    // });
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use('/static', express.static('public'));
+
+app.all('*', (req, res) => {
+  MapRequestsToUUID.mapReqByUrl(req)
+    .then((uuid) => {
+      logger.info(`Got UUID: ${uuid}`);
+      const compiled = _.template(RedirectTemplate);
+      const response = compiled({ uuid });
+      res.send(response);
+    })
+    .catch((err) => {
+      logger.error(err);
+      res.redirect(`${redirectHost}${req.path}`);
+    });
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}!`);
+  logger.info(`Jackson RS Glue listening on port ${port}!`);
 });
